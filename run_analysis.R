@@ -39,12 +39,14 @@ names(dataset4) = gsub(" ","",names(dataset4),)
 names(dataset4) = tolower(names(dataset4))
 
 ## reshape the data in longer format
+library(reshape2)
 meltdata = melt(dataset4, id.vars=c("subject","activitydescription"), variable.name="features", value.name="measurements")
 
 ## work out mean of measurements by subject & activity & features
 tidydata = aggregate(measurements ~ subject + activitydescription + features, data = meltdata, mean)
 
 ## Sort the data
+library(dplyr)
 tidydata = arrange(tidydata, subject, activitydescription,features)
 
 
