@@ -1,28 +1,28 @@
 #The script creates the tidy data set by following the requirement given.
 
 ## read txt files into R
-Following scripts read necessary text files in to R assuming that your working directory is the top directory where all files are saved.
-...testsubject = read.table("test\\subject_test.txt")
-...xtest = read.table("test\\X_test.txt", sep="")
-...ytest = read.table("test\\y_test.txt")
-...trainsubject = read.table("train\\subject_train.txt")
-...xtrain = read.table("train\\X_train.txt", sep="")
-...ytrain = read.table("train\\y_train.txt")
+Following scripts read necessary text files in to R assuming that your working directory is the top directory where all files are saved. @cr
+...testsubject = read.table("test\\subject_test.txt")@cr
+...xtest = read.table("test\\X_test.txt", sep="")@cr
+...ytest = read.table("test\\y_test.txt")@cr
+...trainsubject = read.table("train\\subject_train.txt")@cr
+...xtrain = read.table("train\\X_train.txt", sep="")@cr
+...ytrain = read.table("train\\y_train.txt")@cr
 
 ## name each column
-Following scripts allocate the column name by extracting the value from features file and the info from READE ME file provided.
-...colname = read.table("features.txt")
-...colnameset = colname[,2]
-...names(xtest) = colnameset
-...names(ytest) = "activitylabel"
-...names(testsubject) = "subject"
+Following scripts allocate the column name by extracting the value from features file and the info from READE ME file provided.@cr
+...colname = read.table("features.txt")@cr
+...colnameset = colname[,2]@cr
+...names(xtest) = colnameset@cr
+...names(ytest) = "activitylabel"@cr
+...names(testsubject) = "subject"@cr
 
 ## data combine
-Following scripts combine the data and create one single data set as required.
-...testdata = cbind(testsubject,ytest,xtest)
-...traindata = cbind(trainsubject,ytrain,xtrain)
-...names(traindata) = names(testdata)
-...dataset = rbind(testdata,traindata)
+Following scripts combine the data and create one single data set as required.@cr
+...testdata = cbind(testsubject,ytest,xtest)@cr
+...traindata = cbind(trainsubject,ytrain,xtrain)@cr
+...names(traindata) = names(testdata)@cr
+...dataset = rbind(testdata,traindata)@cr
 
 ## subset mean & std columns
 Following scripts subset only the columns that have mean or std values.
@@ -30,7 +30,7 @@ Following scripts subset only the columns that have mean or std values.
 ...dataset2 = dataset[,c(1,2,grep("mean|std",names(dataset)))]
 
 ## assign the activitylabel name
-Following scripts assign the activity label from activity_label file based on the activity code(1 to 6) in the data set.
+Following scripts assign the activity label from activity_label file based on the activity code(1 to 6) in the data set.@cr
 ...activity = read.table("activity_labels.txt" , stringsAsFactors=FALSE)
 ...names(activity) = c("activitylabel","activitydescription")
 ...dataset3 = merge(dataset2,activity, by="activitylabel")
