@@ -46,7 +46,6 @@ tidydata = aggregate(measurements ~ subject + activitydescription + features, da
 
 ## Sort the data
 tidydata = arrange(tidydata, subject, activitydescription,features)
-return(tidydata)
 
 
 
